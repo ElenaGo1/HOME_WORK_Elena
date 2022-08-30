@@ -147,10 +147,16 @@ int[] Generetion(int sizen)
 /*
 int[] Generetion(int sizen) 
       {
+           
+       while (sizen == 0)
+       {
+       Console.Write($"!!! Укажите размер массива от 1 до 10...n, a не {sizen}:");
+       sizen = Convert.ToInt32(Console.ReadLine());
+       }
        int[] arr = new int[sizen];
-       int sizeL = arr.Length;
-       for (int i = 0; i < sizeL; i++)
-        { Console.Write($"Введите значение (число) элемиента массива для индекса {i}:");
+       for (int i = 0; i < sizen; i++)
+        { 
+          Console.Write($"Введите значение (число) элемиента массива для индекса {i}:");
           int num = Convert.ToInt32(Console.ReadLine());
           arr[i] = num;
           
