@@ -493,7 +493,7 @@ Show2Darray(arrayNew2D);
 10090807
 */
 //TODO: начало задачи 62.
-/*
+
 //Вывод массива под данную задачу
 void Show2Darray(int[,] arry)
 {
@@ -511,11 +511,11 @@ void Show2Darray(int[,] arry)
 
 int[,] СreateAnewArray()
 {
-    int[,] array2D = new int [4,4];
+    int[,] array2D = new int [7,4];
     return array2D;
 }
 
-
+/*
 int [,] SpiralFillingAnArray(int[,] array2D)
 {
 int num = 01;
@@ -576,11 +576,91 @@ for (int t = array2D.GetLength(0)-2; t < array2D.GetLength(0)-1; t++)
 }
 return array2D;
 }
+*/
 
+
+int [,] SpiralFillingAnArray(int[,] array2D)
+{
+int Row = array2D.GetLength(0);
+int Columns = array2D.GetLength(1);
+double Ranks = Row%2 + Row / 2;
+Console.WriteLine("Raz  "+Ranks);
+int num = 01;
+for (int temp = 0; temp < Ranks; temp ++)
+{
+//Заполним первую строку числами
+for (int i = 0+temp; i < array2D.GetLowerBound(0)+temp+1; i++)
+{
+    for(int j = 0+temp; j < array2D.GetLength(1)-temp; j++)
+    {
+       array2D[i,j] = num;
+       num++;
+    }
+}
+//Заполним последний столбец числами минуя первую строку, так как столбец там заполнен.
+for (int k = array2D.GetLowerBound(0)+temp+1; k < array2D.GetLength(0)-temp; k++)
+{
+    for(int l = array2D.GetLength(1)-temp-1; l < array2D.GetLength(1)-temp; l++)
+    {  if (array2D[k,l] == 0)
+       {
+       array2D[k,l] = num;
+       num++;
+       }
+    }
+}
+
+//Заполним последную строку минуя последний столбец так как он заполнен.
+for (int m = array2D.GetLength(0)-1-temp; m < array2D.GetLength(0)-temp; m++)
+{
+    for (int n = array2D.GetLength(1)-temp-2; n > -1+temp; n--)
+    {   
+        if (array2D[m,n] == 0)
+        {
+            array2D[m,n] = num;
+            num++;
+        }
+        
+    }
+}
+//Заполним первый столбец оставшихся строк с конца это 
+for (int o = array2D.GetLength(0)-temp-2; o > array2D.GetLowerBound(0)+temp; o--)
+{
+    for (int p = array2D.GetLowerBound(1)+temp; p < array2D.GetLowerBound(1)+temp+1; p++)
+    {   if (array2D[o,p] == 0)
+        {
+        array2D[o,p] = num;
+        num++;
+        }
+    }
+}
+}
+/*
+//Заполним оставшиеся столбцы второй строки от 2(1) стоблца по 3(2) столбец
+for (int r = array2D.GetLength(0)/array2D.GetLength(0); r < array2D.GetLength(0)/array2D.GetLength(0)+1; r++)
+{
+    for (int s = 1; s < array2D.GetLength(1)-1; s++)
+    {
+        array2D[r,s] = num;
+        num++;
+    }
+}
+
+//Заполним оставшиеся столбцы третьей строки (2) строки от 3(2) стоблца по 2(1) столбец
+for (int t = array2D.GetLength(0)-2; t < array2D.GetLength(0)-1; t++)
+{
+    for (int u = array2D.GetLength(1)-2; u > array2D.GetLowerBound(1); u--)
+    {
+        array2D[t,u] = num;
+        num++;
+    }
+}
+*/
+return array2D;
+}
 
 
 Console.WriteLine("\nLet's form a 4x4 array and fill it with integers with a spiral.");
 int[,] OutpuArraySpiral = SpiralFillingAnArray(СreateAnewArray());
 Show2Darray(OutpuArraySpiral);
-*/
+
 //TODO: Конец задачи 62.
