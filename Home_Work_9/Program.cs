@@ -255,3 +255,36 @@ int doit(int m, int n, int count, int count1)
 }
 Console.Write($" {doit(4, 8, 0, 0)}");
 */
+
+//Доработанный метод нахождения суммы упрощенный
+/*
+int SumOfNaturalNumbersInTheIntervalFinal(int mNum, int nNum)
+{   
+    if (mNum < nNum) return mNum + SumOfNaturalNumbersInTheIntervalFinal(mNum + 1, nNum);
+    else if (mNum == nNum)    
+        return mNum+nNum-nNum;    
+
+    if (mNum > nNum) return mNum + SumOfNaturalNumbersInTheIntervalFinal(mNum-1, nNum);
+    
+    return 0;
+}
+void GenerationScaleOfNumbers2(int m, int n)
+{
+    if (m > n) GenerationScaleOfNumbers2(m - 1, n);
+    Console.Write("{0} ", m);
+    if (m < n) GenerationScaleOfNumbers2(m + 1, n);
+
+}
+void InputOfValuesOutputResult4()
+{
+    Console.Write("Input integer m = 1 or 4: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input integer n = 15 or 8: ");
+    int n = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine();
+    int sumResult = SumOfNaturalNumbersInTheIntervalFinal(nNum: n, mNum: m);
+    GenerationScaleOfNumbers2(m,n);
+    Console.Write("-->{0}", sumResult);
+}
+InputOfValuesOutputResult4();
+*/
